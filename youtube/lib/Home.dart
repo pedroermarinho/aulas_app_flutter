@@ -52,6 +52,10 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
+      body:Container(
+        padding: EdgeInsets.all(16),
+          child: telas[_indiceAtual],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _indiceAtual,
         onTap: (indice){
@@ -83,11 +87,6 @@ class _HomeState extends State<Home> {
             ),
           ]
       ) ,
-    body:Container(
-      child: Center(
-        child: telas[_indiceAtual],
-      ),
-    ),
     );
   }
 }
