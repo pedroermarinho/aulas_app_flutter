@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:youtube/CustomSearchDelegate.dart';
 import 'package:youtube/Telas/Biblioteca.dart';
 import 'package:youtube/Telas/EmAlta.dart';
 import 'package:youtube/Telas/Inicio.dart';
 import 'package:youtube/Telas/Inscricoes.dart';
+
 
 class Home extends StatefulWidget {
   @override
@@ -11,10 +13,11 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _indiceAtual = 0 ;
+  String _pesquisa = "";
   @override
   Widget build(BuildContext context) {
     List <Widget> telas = [
-      Inicio(),
+      Inicio(_pesquisa),
       EmAlta(),
       Inscricoes(),
       Biblioteca(),
@@ -33,23 +36,32 @@ class _HomeState extends State<Home> {
         ),
         actions: <Widget>[
           IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () async {
+                String result =  await showSearch(
+                    context: context,
+                    delegate: CustomSearchDelegate(),
+                );
+                setState(() {
+                  _pesquisa=result;
+                });
+              }
+          ),
+          /*
+          IconButton(
               icon: Icon(Icons.videocam),
               onPressed: (){
                 print("ação: videocam");
               }
           ),
-          IconButton(
-              icon: Icon(Icons.search),
-              onPressed: (){
-                print("ação: pesquisa");
-              }
-          ),
+
           IconButton(
               icon: Icon(Icons.account_circle),
               onPressed: (){
                 print("ação: conta");
               }
           ),
+           */
         ],
       ),
       body:Container(
