@@ -28,11 +28,11 @@ class SnapInstalledModel {
   }
 
   Map<String, dynamic> toJson() => {
-        'name': this.name,
-        'version': this.version,
-        'rev': this.rev,
-        'tracking': this.tracking,
-        'publisher': this.publisher,
-        'notes': this.notes,
+        'name': name,
+        'version': version,
+        'rev': rev,
+        'tracking': tracking,
+        'publisher': publisher,
+        'notes': notes,
       };
 }
